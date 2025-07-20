@@ -3,13 +3,31 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { RotateCcw, Clock, Target, Zap } from 'lucide-react';
 
-const SAMPLE_TEXTS = [
-  "The quick brown fox jumps over the lazy dog near the riverbank. This sentence contains every letter of the alphabet and provides a good typing challenge for beginners and experts alike.",
-  "Technology has revolutionized the way we communicate and work in the modern world. From smartphones to artificial intelligence, innovation continues to shape our daily lives in remarkable ways.",
-  "Typing speed and accuracy are essential skills in today's digital workplace. Regular practice can significantly improve your performance and boost your confidence when working with computers.",
-  "The art of programming requires patience, logical thinking, and attention to detail. Each line of code serves a purpose in creating software that can solve complex problems efficiently.",
-  "Climate change presents one of the greatest challenges of our time. Scientists around the world are working together to develop sustainable solutions for future generations."
-];
+const SAMPLE_TEXTS = {
+  easy: [
+    "The cat sat on the mat.",
+    "I like to eat pizza.",
+    "The sun is bright today.",
+    "Dogs are good friends.",
+    "Water is very important."
+  ],
+  medium: [
+    "The quick brown fox jumps over the lazy dog near the riverbank.",
+    "Technology has revolutionized the way we communicate and work.",
+    "Typing speed and accuracy are essential skills in today's workplace.",
+    "Regular practice can significantly improve your performance daily.",
+    "Innovation continues to shape our lives in remarkable ways."
+  ],
+  hard: [
+    "The quick brown fox jumps over the lazy dog near the riverbank. This sentence contains every letter of the alphabet and provides a good typing challenge for beginners and experts alike.",
+    "Technology has revolutionized the way we communicate and work in the modern world. From smartphones to artificial intelligence, innovation continues to shape our daily lives in remarkable ways.",
+    "Typing speed and accuracy are essential skills in today's digital workplace. Regular practice can significantly improve your performance and boost your confidence when working with computers.",
+    "The art of programming requires patience, logical thinking, and attention to detail. Each line of code serves a purpose in creating software that can solve complex problems efficiently.",
+    "Climate change presents one of the greatest challenges of our time. Scientists around the world are working together to develop sustainable solutions for future generations."
+  ]
+};
+
+type DifficultyLevel = 'easy' | 'medium' | 'hard';
 
 interface TypingStats {
   wpm: number;
@@ -20,7 +38,8 @@ interface TypingStats {
 }
 
 export default function TypingTest() {
-  const [currentText, setCurrentText] = useState(SAMPLE_TEXTS[0]);
+  const [difficulty, setDifficulty] = useState<DifficultyLevel>('easy');
+  const [currentText, setCurrentText] = useState(SAMPLE_TEXTS.easy[0]);
   const [userInput, setUserInput] = useState('');
   const [isActive, setIsActive] = useState(false);
   const [startTime, setStartTime] = useState<number | null>(null);
@@ -110,7 +129,8 @@ export default function TypingTest() {
     setIsFinished(false);
     setStartTime(null);
     setStats({ wpm: 0, accuracy: 100, timeElapsed: 0, errors: 0, totalChars: 0 });
-    setCurrentText(SAMPLE_TEXTS[Math.floor(Math.random() * SAMPLE_TEXTS.length)]);
+    const texts = SAMPLE_TEXTS[difficulty];
+    setCurrentText(texts[Math.floor(Math.random() * texts.length)]);
     
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -152,8 +172,53 @@ export default function TypingTest() {
     };
   }, []);
 
+  // Handle difficulty change
+  const handleDifficultyChange = (newDifficulty: DifficultyLevel) => {
+    setDifficulty(newDifficulty);
+    const texts = SAMPLE_TEXTS[newDifficulty];
+    setCurrentText(texts[Math.floor(Math.random() * texts.length)]);
+    resetTest();
+  };
+
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6">
+      {/* Difficulty Selection */}
+      <Card className="card-elegant">
+        <CardContent className="p-6">
+          <div className="text-center space-y-4">
+            <h3 className="text-lg font-semibold">Choose Difficulty Level</h3>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Button
+                variant={difficulty === 'easy' ? 'default' : 'outline'}
+                onClick={() => handleDifficultyChange('easy')}
+                className="min-w-[100px]"
+              >
+                Easy
+              </Button>
+              <Button
+                variant={difficulty === 'medium' ? 'default' : 'outline'}
+                onClick={() => handleDifficultyChange('medium')}
+                className="min-w-[100px]"
+              >
+                Medium
+              </Button>
+              <Button
+                variant={difficulty === 'hard' ? 'default' : 'outline'}
+                onClick={() => handleDifficultyChange('hard')}
+                className="min-w-[100px]"
+              >
+                Hard
+              </Button>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              {difficulty === 'easy' && 'Simple words and short sentences'}
+              {difficulty === 'medium' && 'Standard sentences with common words'}
+              {difficulty === 'hard' && 'Complex sentences with varied vocabulary'}
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Stats Display */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card className="card-elegant">
