@@ -1,222 +1,450 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Shield, Eye, Database, Lock } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Shield, Eye, Database, Lock, Globe, Server, CheckCircle } from 'lucide-react';
 
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto space-y-8">
-        {/* Header */}
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-gradient">Privacy Policy</h1>
-          <p className="text-xl text-muted-foreground">
-            Your privacy is our priority
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Last updated: December 2024
-          </p>
+      
+      {/* Hero Section */}
+      <section className="hero-gradient py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <Badge className="badge-featured">Legal</Badge>
+            <h1 className="text-4xl md:text-5xl font-bold">
+              Privacy <span className="text-gradient">Policy</span>
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Your privacy is fundamental to how we build and operate Typely.xyz. 
+              Learn how we protect your data and respect your rights.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Last updated: January 2026
+            </p>
+          </div>
         </div>
+      </section>
 
-        {/* Introduction */}
-        <Card className="card-elegant">
-          <CardHeader>
-            <CardTitle className="flex items-center">
-              <Shield className="h-6 w-6 text-primary mr-2" />
-              Our Commitment to Privacy
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground leading-relaxed">
-              At Typely.xyz, we are committed to protecting your privacy and ensuring 
-              that your personal information remains secure. This Privacy Policy explains 
-              how we handle information when you use our free online typing speed test tool.
-            </p>
-          </CardContent>
-        </Card>
+      <div className="container mx-auto px-4 py-12">
+        <div className="max-w-4xl mx-auto space-y-8">
+          
+          {/* Privacy Summary */}
+          <Card className="card-featured">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Shield className="h-6 w-6 text-primary" />
+                Privacy at a Glance
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-muted-foreground">No personal data collection</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-muted-foreground">No registration required</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-muted-foreground">No tracking cookies</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-muted-foreground">No typing data stored on servers</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-muted-foreground">All processing happens locally</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-muted-foreground">HTTPS encryption on all connections</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
 
-        {/* What We Don't Collect */}
-        <Card className="card-elegant">
-          <CardHeader>
-            <CardTitle className="flex items-center">
-              <Eye className="h-6 w-6 text-success mr-2" />
-              What We Don't Collect
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start">
-                <span className="text-success mr-2">✓</span>
-                <span><strong>No Personal Information:</strong> We don't require or collect names, email addresses, or any personal data.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-success mr-2">✓</span>
-                <span><strong>No Account Registration:</strong> Our service works without creating an account or logging in.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-success mr-2">✓</span>
-                <span><strong>No Typing Data Storage:</strong> Your typed text and test results are not saved on our servers.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-success mr-2">✓</span>
-                <span><strong>No Tracking Cookies:</strong> We don't use cookies to track your behavior or identify you.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-success mr-2">✓</span>
-                <span><strong>No Third-Party Analytics:</strong> We don't use Google Analytics or similar tracking services.</span>
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
+          {/* Introduction */}
+          <Card className="card-elegant">
+            <CardHeader>
+              <CardTitle>Introduction</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-muted-foreground leading-relaxed">
+                At Typely.xyz ("we," "our," or "us"), we are committed to protecting your privacy 
+                and ensuring that your personal information remains secure. This Privacy Policy 
+                explains how we handle information when you use our free online typing speed test 
+                service (the "Service").
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                We have designed Typely.xyz with privacy as a core principle. Unlike many online 
+                services, we do not require accounts, collect personal information, or track your 
+                behavior. Our goal is to provide a useful typing test tool while respecting your 
+                fundamental right to privacy.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                By using Typely.xyz, you agree to the practices described in this Privacy Policy. 
+                If you do not agree with these practices, please discontinue use of our Service.
+              </p>
+            </CardContent>
+          </Card>
 
-        {/* How the Service Works */}
-        <Card className="card-elegant">
-          <CardHeader>
-            <CardTitle className="flex items-center">
-              <Database className="h-6 w-6 text-primary mr-2" />
-              How Our Service Works
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                <strong>Client-Side Processing:</strong> All typing speed calculations (WPM, accuracy, timing) 
-                are performed directly in your web browser using JavaScript. No data is sent to our servers 
-                during the typing test.
+          {/* What We Don't Collect */}
+          <Card className="card-elegant">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Eye className="h-6 w-6 text-success" />
+                Information We Do NOT Collect
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-muted-foreground leading-relaxed">
+                We take a privacy-first approach. Here is what we explicitly do NOT collect:
               </p>
-              <p>
-                <strong>Local Storage Only:</strong> Any preferences you set (such as dark/light theme) 
-                are stored locally in your browser's local storage and never transmitted to our servers.
-              </p>
-              <p>
-                <strong>Static Content:</strong> The website serves static content (HTML, CSS, JavaScript) 
-                and doesn't require dynamic server-side processing of your personal data.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Technical Information */}
-        <Card className="card-elegant">
-          <CardHeader>
-            <CardTitle className="flex items-center">
-              <Lock className="h-6 w-6 text-warning mr-2" />
-              Technical Information We May Collect
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Like most websites, our web server may automatically collect certain technical information 
-                for basic website functionality and security purposes:
-              </p>
-              <ul className="space-y-2 ml-4">
-                <li>• IP address (for security and spam protection)</li>
-                <li>• Browser type and version (for compatibility)</li>
-                <li>• Operating system (for optimization)</li>
-                <li>• Referring website (to understand traffic sources)</li>
-                <li>• Pages visited and time spent (for performance optimization)</li>
+              <ul className="space-y-3 text-muted-foreground">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-foreground">Personal Identification Information:</strong> We 
+                    do not collect names, email addresses, phone numbers, addresses, or any other 
+                    personally identifiable information (PII).
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-foreground">Account Information:</strong> We do not require 
+                    or offer user accounts. There is no registration, login, or profile system.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-foreground">Typing Content:</strong> The text you type 
+                    during tests is processed entirely in your browser and is never transmitted to 
+                    our servers.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-foreground">Test Results:</strong> Your WPM scores, 
+                    accuracy rates, and other test metrics are not stored on our servers. They 
+                    remain only in your browser's local storage.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-foreground">Tracking Cookies:</strong> We do not use 
+                    cookies for tracking, advertising, or user identification purposes.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-foreground">Third-Party Analytics:</strong> We do not 
+                    use Google Analytics, Facebook Pixel, or other tracking and analytics services 
+                    that collect user data.
+                  </div>
+                </li>
               </ul>
-              <p>
-                This information is used solely for website maintenance, security, and improving 
-                the user experience. It is not used to identify individual users.
+            </CardContent>
+          </Card>
+
+          {/* How the Service Works */}
+          <Card className="card-elegant">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Database className="h-6 w-6 text-primary" />
+                How Our Service Works
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div>
+                <h4 className="font-semibold mb-2">Client-Side Processing</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  All typing speed calculations, including Words Per Minute (WPM), accuracy 
+                  percentages, and error counts, are performed entirely in your web browser 
+                  using JavaScript. No typing data is sent to our servers during or after 
+                  the typing test. This means your keystrokes and test results stay on your 
+                  device.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-2">Local Storage</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  We use your browser's local storage feature to save certain preferences 
+                  and your recent test results. This data is stored only on your device and 
+                  is never transmitted to our servers. Data stored locally includes:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mt-2 space-y-1">
+                  <li>Theme preference (dark/light mode)</li>
+                  <li>Recent test results (WPM, accuracy, difficulty, date)</li>
+                  <li>Best WPM score</li>
+                </ul>
+                <p className="text-muted-foreground mt-2">
+                  You can clear this data at any time by clearing your browser's local storage 
+                  or using your browser's "Clear site data" function.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-2">Static Content Delivery</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Typely.xyz serves static files (HTML, CSS, JavaScript, images) that run 
+                  in your browser. There is no server-side processing of your personal data 
+                  or typing activity. The website functions entirely as a client-side application.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Technical Information */}
+          <Card className="card-elegant">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Server className="h-6 w-6 text-warning" />
+                Technical Information We May Collect
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-muted-foreground leading-relaxed">
+                Like all websites, our web hosting infrastructure may automatically collect 
+                certain technical information for operational and security purposes:
               </p>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Data Security */}
-        <Card className="card-elegant">
-          <CardHeader>
-            <CardTitle>Data Security</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground leading-relaxed">
-              Since we don't collect or store personal data, there's minimal risk to your privacy. 
-              However, we still implement appropriate security measures to protect our website 
-              and ensure reliable service delivery. Our website uses HTTPS encryption to secure 
-              the connection between your browser and our servers.
-            </p>
-          </CardContent>
-        </Card>
-
-        {/* Third-Party Services */}
-        <Card className="card-elegant">
-          <CardHeader>
-            <CardTitle>Third-Party Services</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                <strong>Web Hosting:</strong> Our website is hosted by a third-party hosting provider. 
-                Standard web server logs may be generated as part of normal hosting operations.
+              <ul className="space-y-2 text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-muted-foreground">•</span>
+                  <span><strong>IP Address:</strong> Temporarily logged for security and DDoS protection. Not used to identify individual users.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-muted-foreground">•</span>
+                  <span><strong>Browser Type & Version:</strong> Used for compatibility monitoring and debugging.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-muted-foreground">•</span>
+                  <span><strong>Operating System:</strong> Used for performance optimization.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-muted-foreground">•</span>
+                  <span><strong>Referring URL:</strong> May be logged to understand traffic sources.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-muted-foreground">•</span>
+                  <span><strong>Timestamp:</strong> When pages are accessed, for infrastructure monitoring.</span>
+                </li>
+              </ul>
+              <p className="text-muted-foreground leading-relaxed mt-4">
+                This information is collected at the web server level and is not linked to 
+                individual users. It is used solely for maintaining service availability, 
+                security monitoring, and infrastructure optimization. Server logs are 
+                typically retained for a limited period and then deleted.
               </p>
-              <p>
-                <strong>Content Delivery:</strong> We may use content delivery networks (CDNs) to 
-                improve website loading speeds. These services don't access or store your personal information.
+            </CardContent>
+          </Card>
+
+          {/* Data Security */}
+          <Card className="card-elegant">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Lock className="h-6 w-6 text-success" />
+                Data Security
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-muted-foreground leading-relaxed">
+                We implement appropriate technical measures to protect the integrity and 
+                availability of our Service:
               </p>
-              <p>
-                <strong>Future Advertising:</strong> We may implement Google AdSense or similar 
-                advertising services in the future. If we do, we will update this privacy policy 
-                and notify users of any changes to data collection practices.
+              <ul className="space-y-3 text-muted-foreground">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-foreground">HTTPS Encryption:</strong> All connections 
+                    to Typely.xyz are encrypted using HTTPS (TLS/SSL), protecting data in transit 
+                    between your browser and our servers.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-foreground">Minimal Data Architecture:</strong> By not 
+                    collecting personal data, we eliminate the risk of data breaches affecting 
+                    user information. You cannot lose what you never had.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-foreground">Regular Security Updates:</strong> We keep 
+                    our platform and dependencies updated to protect against known vulnerabilities.
+                  </div>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          {/* Third-Party Services */}
+          <Card className="card-elegant">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Globe className="h-6 w-6 text-accent" />
+                Third-Party Services
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <h4 className="font-semibold mb-2">Web Hosting</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Our website is hosted by a third-party hosting provider. Standard web server 
+                  logs may be generated as part of normal hosting operations. These logs are 
+                  managed according to the hosting provider's data retention policies.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-2">Content Delivery Network (CDN)</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  We may use CDN services to improve website loading speeds globally. CDNs 
+                  cache and serve static content from servers closer to you. These services 
+                  do not access or store your personal information.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-2">Advertising</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Typely.xyz may display advertisements through Google AdSense or similar 
+                  advertising networks. These third-party advertising services may use cookies 
+                  or similar technologies to serve ads based on your browsing history. You can 
+                  opt out of personalized advertising by visiting{' '}
+                  <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    Google Ads Settings
+                  </a>{' '}
+                  or{' '}
+                  <a href="https://optout.aboutads.info" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    AboutAds.info
+                  </a>.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold mb-2">External Fonts</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  We use Google Fonts to display typography on our website. When you load our 
+                  pages, your browser may connect to Google's servers to retrieve font files. 
+                  Google's privacy policy applies to this data collection.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Your Rights */}
+          <Card className="card-elegant">
+            <CardHeader>
+              <CardTitle>Your Rights and Choices</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-muted-foreground leading-relaxed">
+                Because we collect minimal data, many traditional privacy rights are inherently 
+                satisfied:
               </p>
-            </div>
-          </CardContent>
-        </Card>
+              <ul className="space-y-3 text-muted-foreground">
+                <li className="flex items-start gap-3">
+                  <span className="text-primary font-bold">•</span>
+                  <div>
+                    <strong className="text-foreground">Right to Access:</strong> Since we don't 
+                    store personal data, there is no personal information to access.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-primary font-bold">•</span>
+                  <div>
+                    <strong className="text-foreground">Right to Deletion:</strong> We don't maintain 
+                    user data that requires deletion. Local storage data can be cleared through your browser.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-primary font-bold">•</span>
+                  <div>
+                    <strong className="text-foreground">Right to Data Portability:</strong> Your test 
+                    results in local storage can be accessed through your browser's developer tools.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-primary font-bold">•</span>
+                  <div>
+                    <strong className="text-foreground">Browser Controls:</strong> You can clear local 
+                    storage, block cookies, and use private/incognito browsing at any time.
+                  </div>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
 
-        {/* Your Rights */}
-        <Card className="card-elegant">
-          <CardHeader>
-            <CardTitle>Your Rights</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                <span><strong>No Data to Access:</strong> Since we don't store personal data, there's no personal information to access or download.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                <span><strong>No Data to Delete:</strong> We don't maintain user profiles or stored typing results that need deletion.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                <span><strong>Browser Controls:</strong> You can clear your browser's local storage to remove any locally stored preferences.</span>
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
+          {/* Children's Privacy */}
+          <Card className="card-elegant">
+            <CardHeader>
+              <CardTitle>Children's Privacy</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground leading-relaxed">
+                Typely.xyz is designed to be used by individuals of all ages. Since we do not 
+                collect personal information, our service is safe for users under the age of 13 
+                (or the applicable age of digital consent in your jurisdiction). We do not 
+                knowingly collect personal information from children. If you are a parent or 
+                guardian and believe your child has provided personal information through our 
+                contact form, please contact us so we can address the matter.
+              </p>
+            </CardContent>
+          </Card>
 
-        {/* Contact Information */}
-        <Card className="card-elegant">
-          <CardHeader>
-            <CardTitle>Contact Us</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              If you have any questions about this Privacy Policy or our privacy practices, 
-              please contact us through our <a href="/contact" className="text-primary hover:underline">contact page</a>.
-            </p>
-          </CardContent>
-        </Card>
+          {/* Changes to Policy */}
+          <Card className="card-elegant">
+            <CardHeader>
+              <CardTitle>Changes to This Privacy Policy</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground leading-relaxed">
+                We may update this Privacy Policy from time to time to reflect changes in our 
+                practices, technology, legal requirements, or for other operational reasons. 
+                When we make material changes, we will update the "Last updated" date at the 
+                top of this page. We encourage you to review this Privacy Policy periodically 
+                to stay informed about how we protect your privacy. Your continued use of 
+                Typely.xyz after any changes constitutes acceptance of the updated policy.
+              </p>
+            </CardContent>
+          </Card>
 
-        {/* Updates */}
-        <Card className="card-elegant">
-          <CardHeader>
-            <CardTitle>Policy Updates</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              We may update this Privacy Policy from time to time. Any changes will be posted 
-              on this page with an updated "Last updated" date. We encourage you to review 
-              this policy periodically to stay informed about how we protect your privacy.
-            </p>
-          </CardContent>
-        </Card>
+          {/* Contact */}
+          <Card className="card-featured">
+            <CardContent className="p-8 text-center">
+              <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
+              <h2 className="text-2xl font-bold mb-3">Questions About Privacy?</h2>
+              <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+                If you have any questions, concerns, or requests regarding this Privacy Policy 
+                or our privacy practices, please don't hesitate to contact us.
+              </p>
+              <Link 
+                to="/contact" 
+                className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors btn-glow"
+              >
+                Contact Us
+              </Link>
+            </CardContent>
+          </Card>
+
+        </div>
       </div>
-      </div>
+
       <Footer />
     </div>
   );
