@@ -3,6 +3,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { RotateCcw, Clock, Target, Zap, AlertCircle, Trophy, Timer, Keyboard } from 'lucide-react';
+import NameInputModal from './NameInputModal';
+import { addToLeaderboard } from './Leaderboard';
 
 const SAMPLE_TEXTS = {
   easy: [
@@ -50,7 +52,11 @@ interface TestResult {
   date: Date;
 }
 
-export default function TypingTest() {
+interface TypingTestProps {
+  onScoreSaved?: () => void;
+}
+
+export default function TypingTest({ onScoreSaved }: TypingTestProps) {
   const [difficulty, setDifficulty] = useState<DifficultyLevel>('medium');
   const [timeLimit, setTimeLimit] = useState<number>(60);
   const [currentText, setCurrentText] = useState(SAMPLE_TEXTS.medium[0]);
@@ -70,6 +76,8 @@ export default function TypingTest() {
   const [isFinished, setIsFinished] = useState(false);
   const [recentResults, setRecentResults] = useState<TestResult[]>([]);
   const [bestWpm, setBestWpm] = useState<number>(0);
+  const [showNameModal, setShowNameModal] = useState(false);
+  const [pendingScore, setPendingScore] = useState<{ wpm: number; accuracy: number } | null>(null);
   
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -191,8 +199,31 @@ export default function TypingTest() {
       if (finalStats.wpm > bestWpm) {
         setBestWpm(finalStats.wpm);
       }
+      
+      // Show name input modal for leaderboard
+      if (finalStats.wpm > 0) {
+        setPendingScore({ wpm: finalStats.wpm, accuracy: finalStats.accuracy });
+        setShowNameModal(true);
+      }
     }
   }, [startTime, timeLimit, userInput, calculateStats, difficulty, recentResults, bestWpm]);
+
+  // Handle save to leaderboard
+  const handleSaveToLeaderboard = (name: string) => {
+    if (pendingScore) {
+      addToLeaderboard({
+        name,
+        wpm: pendingScore.wpm,
+        accuracy: pendingScore.accuracy,
+        difficulty,
+        timeLimit,
+        date: new Date().toISOString()
+      });
+      onScoreSaved?.();
+    }
+    setShowNameModal(false);
+    setPendingScore(null);
+  };
 
   // Reset test
   const resetTest = () => {
@@ -527,6 +558,18 @@ export default function TypingTest() {
           </CardContent>
         </Card>
       )}
+
+      {/* Name Input Modal for Leaderboard */}
+      <NameInputModal
+        isOpen={showNameModal}
+        onClose={() => {
+          setShowNameModal(false);
+          setPendingScore(null);
+        }}
+        onSubmit={handleSaveToLeaderboard}
+        wpm={pendingScore?.wpm || 0}
+        accuracy={pendingScore?.accuracy || 0}
+      />
     </div>
   );
 }
