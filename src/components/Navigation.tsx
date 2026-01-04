@@ -7,6 +7,7 @@ import ThemeToggle from './ThemeToggle';
 
 const navigationLinks = [
   { href: '/', label: 'Home' },
+  { href: '/typing-guide', label: 'Typing Guide' },
   { href: '/about', label: 'About' },
   { href: '/faq', label: 'FAQ' },
   { href: '/contact', label: 'Contact' },
