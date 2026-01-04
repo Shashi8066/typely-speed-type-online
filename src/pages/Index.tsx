@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import TypingTest from '@/components/TypingTest';
+import Leaderboard from '@/components/Leaderboard';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
@@ -12,6 +14,12 @@ import {
 } from 'lucide-react';
 
 const Index = () => {
+  const [leaderboardRefresh, setLeaderboardRefresh] = useState(0);
+
+  const handleScoreSaved = () => {
+    setLeaderboardRefresh(prev => prev + 1);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -51,7 +59,12 @@ const Index = () => {
           </div>
 
           {/* Typing Test Component */}
-          <TypingTest />
+          <TypingTest onScoreSaved={handleScoreSaved} />
+          
+          {/* Leaderboard */}
+          <div className="mt-8">
+            <Leaderboard refreshTrigger={leaderboardRefresh} />
+          </div>
         </div>
       </section>
 
