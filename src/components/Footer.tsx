@@ -3,6 +3,7 @@ import { Keyboard, Heart } from 'lucide-react';
 
 const footerLinks = [
   { href: '/about', label: 'About' },
+  { href: '/typing-guide', label: 'Typing Guide' },
   { href: '/privacy-policy', label: 'Privacy Policy' },
   { href: '/terms', label: 'Terms & Conditions' },
   { href: '/contact', label: 'Contact' },

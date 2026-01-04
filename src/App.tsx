@@ -10,6 +10,7 @@ import Terms from "./pages/Terms";
 import Contact from "./pages/Contact";
 import Disclaimer from "./pages/Disclaimer";
 import FAQ from "./pages/FAQ";
+import TypingGuide from "./pages/TypingGuide";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/typing-guide" element={<TypingGuide />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
